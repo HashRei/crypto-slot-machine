@@ -10,8 +10,8 @@ export function Page({ children }: PageProps) {
   return (
     <div>
       <Head>
-        <title>Web3 - Slot machine</title>
-        <meta name="description" content="Web3 - Slot machine | Silvan Reigue" />
+        <title>Crypto - Slot machine</title>
+        <meta name="description" content="Crypto - Slot machine | HashRei" />
       </Head>
       <Navbar />
       {children}
