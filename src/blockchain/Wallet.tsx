@@ -1,38 +1,35 @@
-import { useEffect, useState } from "react";
-import { IoMdWallet } from "react-icons/io";
-import LogoutIcon from "@mui/icons-material/Logout";
-import Image from "next/image";
-import { injected } from "../helper/connectos";
-import { useWeb3React } from "@web3-react/core";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react"
+import { IoMdWallet } from "react-icons/io"
+import LogoutIcon from "@mui/icons-material/Logout"
+import Image from "next/image"
+import { injected } from "../helper/connectors"
+import { useWeb3React } from "@web3-react/core"
+import { motion } from "framer-motion"
 
 interface WalletProps {
-  isMobile: boolean;
+  isMobile: boolean
 }
 
 export function Wallet({ isMobile }: WalletProps) {
-  const [hasMetamask, setHasMetamask] = useState(false);
-  const { active, activate, deactivate, account } = useWeb3React();
+  const [hasMetamask, setHasMetamask] = useState(false)
+  const { active, activate, deactivate, account } = useWeb3React()
 
   useEffect(() => {
     if (typeof window.ethereum !== "undefined") {
-      setHasMetamask(true);
+      setHasMetamask(true)
     }
-    if (
-      active === false &&
-      localStorage.getItem("isWalletconnected") === "true"
-    ) {
-      activate(injected);
+    if (active === false && localStorage.getItem("isWalletconnected") === "true") {
+      activate(injected)
     }
-  }, []);
+  }, [])
 
   async function connect() {
     if (typeof window.ethereum !== "undefined") {
       try {
-        await activate(injected);
-        localStorage.setItem("isWalletconnected", "true");
+        await activate(injected)
+        localStorage.setItem("isWalletconnected", "true")
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     }
   }
@@ -40,10 +37,10 @@ export function Wallet({ isMobile }: WalletProps) {
   async function disconnect() {
     if (typeof window.ethereum !== "undefined") {
       try {
-        await deactivate();
-        localStorage.setItem("isWalletconnected", "false");
+        await deactivate()
+        localStorage.setItem("isWalletconnected", "false")
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     }
   }
@@ -61,34 +58,18 @@ export function Wallet({ isMobile }: WalletProps) {
                   </p>
                   {/* Add the Metamask profil icon here */}
                 </button>
-                <button
-                  className="p-2 rounded-full border-2"
-                  onClick={disconnect}
-                >
+                <button className="p-2 rounded-full border-2" onClick={disconnect}>
                   <LogoutIcon />
                 </button>
               </div>
             ) : (
-              <button
-                className="disabled:opacity-70  disabled:cursor-not-allowed"
-                onClick={connect}
-              >
+              <button className="disabled:opacity-70  disabled:cursor-not-allowed" onClick={connect}>
                 <IoMdWallet size="34" />
               </button>
             )
           ) : (
-            <button
-              className="disabled:opacity-70  disabled:cursor-not-allowed"
-              onClick={() =>
-                window.open("https://metamask.io/download", "_blank")
-              }
-            >
-              <Image
-                src="/MetaMask_Fox.svg"
-                alt="MetaMask_Fox logo"
-                width={"40px"}
-                height={"40px"}
-              />
+            <button className="disabled:opacity-70  disabled:cursor-not-allowed" onClick={() => window.open("https://metamask.io/download", "_blank")}>
+              <Image src="/MetaMask_Fox.svg" alt="MetaMask_Fox logo" width={"40px"} height={"40px"} />
             </button>
           )}
         </div>
@@ -102,35 +83,22 @@ export function Wallet({ isMobile }: WalletProps) {
                     {account?.slice(0, 7)}...{account?.slice(-3)}
                   </p>
                 </button>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-full border-2"
-                  onClick={disconnect}
-                >
+                <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="p-2 rounded-full border-2" onClick={disconnect}>
                   <LogoutIcon />
                 </motion.button>
               </div>
             ) : (
-              <button
-                className="disabled:opacity-70  disabled:cursor-not-allowed px-10 py-3 border rounded-md text-base font-bold font-sans"
-                onClick={connect}
-              >
+              <button className="disabled:opacity-70  disabled:cursor-not-allowed px-10 py-3 border rounded-md text-base font-bold font-sans" onClick={connect}>
                 Connect your wallet
               </button>
             )
           ) : (
-            <button
-              className="disabled:opacity-70  disabled:cursor-not-allowed px-10 py-3 border rounded-md text-base font-bold font-sans"
-              onClick={() =>
-                window.open("https://metamask.io/download", "_blank")
-              }
-            >
+            <button className="disabled:opacity-70  disabled:cursor-not-allowed px-10 py-3 border rounded-md text-base font-bold font-sans" onClick={() => window.open("https://metamask.io/download", "_blank")}>
               Install Metamask
             </button>
           )}
         </div>
       )}
     </div>
-  );
+  )
 }
