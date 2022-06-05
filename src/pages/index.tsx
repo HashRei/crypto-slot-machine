@@ -1,10 +1,11 @@
 import type { NextPage } from "next"
 import { Page } from "../components/Page"
+import { SlotMachine } from "../components/SlotMachine"
 
 const Home: NextPage = () => {
   return (
     <Page>
-      <div className=" bg-red-600">TEST</div>
+      <SlotMachine />
     </Page>
   )
 }

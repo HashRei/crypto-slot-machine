@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+
+.container {
+  border-radius: 10px;
+  background-color: #266bfe;
+  box-shadow: 5px 5px 15px #ddeffd; /* width height blur shadow-color */
+  height: 75vh;
+  width: 75vw;
+  font-size: 25px;
+  font-family: "Roboto Mono", monospace;
+  /* text-shadow: 1px px #FFF6E3; */
+}
+
+.spin-button {
+  border-radius: 5px;
+  background-color: #ab47bc;
+}
+.spin-button:hover {
+  background-color: #ba68c8;
+}
+
+.buy-tokens-button {
+  border-radius: 5px;
+  background-color: #c8b31c;
+}
+
+.buy-tokens-button:hover {
+  background-color: #a89d4a;
+}
+
+.status-bar {
+  border-radius: 5px;
+  background-color: #37474f;
+}
+
+.slots-container {
+  border-radius: 15px;
+  background-color: #fafafa;
+}
