@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Wallet } from "../../blockchain/Wallet";
 import * as React from "react";
@@ -16,9 +15,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import CollectionsIcon from "@mui/icons-material/Collections";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 interface NavbarButtonProps {
   text?: string;
@@ -51,7 +48,7 @@ export function Navbar() {
         <div className=" space-x-6">
           <NavbarSocialButton
             text="GitHub"
-            path="https://github.com/HashRei/nft-marketplace"
+            path="https://github.com/HashRei/crypto-slot-machine"
             icon={<GitHubIcon className="mr-4" />}
           />
 
@@ -61,6 +58,8 @@ export function Navbar() {
             icon={<TwitterIcon className="mr-4" />}
           />
         </div>
+
+        <NavbarButton text="Buy Slot Machine Tokens (SMT)" path="/" />
 
         <DarkModeButton />
 
@@ -145,35 +144,14 @@ export default function TemporaryDrawer() {
   const list = () => (
     <Box>
       <List>
-        {["Create an NFT", "Marketplace", "My collection"].map(
+        {["Buy Slot Machine Tokens (SMT)"].map(
           (text, index) => (
             <ListItemButton key={text}>
               {index === 0 && (
-                <Link href="/MinterPage" passHref>
-                  <button className="inline-flex">
-                    <ListItemIcon>
-                      <AddCircleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </button>
-                </Link>
-              )}
-              {index === 1 && (
-                <Link href="/MarketplacePage" passHref>
+                <Link href="/" passHref>
                   <button className="inline-flex">
                     <ListItemIcon>
                       <SwapHorizIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </button>
-                </Link>
-              )}
-
-              {index === 2 && (
-                <Link href="/MyCollectionPage" passHref>
-                  <button className="inline-flex">
-                    <ListItemIcon>
-                      <CollectionsIcon />
                     </ListItemIcon>
                     <ListItemText primary={text} />
                   </button>
